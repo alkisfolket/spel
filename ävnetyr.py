@@ -19,7 +19,9 @@ class Föremål():
     def __init__(self,type,):
         self.type = type
         self.styrka = rand.randint(1,20)
-        
+
+F1 = Föremål("träklubba")
+F2 = Föremål("Rostig dolk")        
 class Kista():
     def __init__(self):
         pass
@@ -84,7 +86,7 @@ def main():
    
 
     hjältenamn = input("vad ska du heta?")
-    print(f"Var hälsad {hjältenamn} välkommen till Mumidalen")
+    print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
     hjältehp = 100
     hjältestyrka = 1
@@ -109,19 +111,19 @@ def main():
 
         if val == "1":
             monster = rand.choice(monsters)
-            hjältehp = strid(hjältehp,hjältestyrka, monster)
+            hjältehp = strid(hjältehp,hjältestyrka,monster)
         elif val == "2":
             pass
         elif val == "3":
             stats(hjältehp,hjältestyrka,rädlsa)
         elif val =="4":
             valet = input(
-            """
-            Vad vill du göra?
-            För att vinna behöver du gissa på 4 eller mindre gånger ett tal mellan 1 - 20. 
-            1. Gambla
-            2. Inte gambla
-            """)
+              """
+              Vad vill du göra?
+              För att vinna behöver du gissa på 4 eller mindre gånger ett tal mellan 1 - 20. 
+                1. Gambla
+                2. Inte gambla
+              """)
             if valet == "1":
                 slump()
             elif valet == "2":
