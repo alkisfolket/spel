@@ -30,7 +30,7 @@ class Fälla():
     def __init__(self):
         pass
 
-def strid(hjältehp, hjältestyrka,monster):
+def strid(hjältehp, hjältestyrka):
     stridljud = ["Haaaa! Haaa!", "Ditt jävla monster! DÖ!", "Ojj", "Du ska betala för det här", "Mitt ansikte är det sista du ser!!", "Smaka på mitt kalla järn", "Ohhhhhaaa"]
    
     random_monster = rand.choice(monsters)
@@ -86,7 +86,7 @@ def main():
    
 
     hjältenamn = input("vad ska du heta?")
-    print(f"Var hälsad {hjältenamn} välkommen till Mumidalen")
+    print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
     hjältehp = 100
     hjältestyrka = 1
@@ -110,8 +110,7 @@ def main():
         val = input("")
 
         if val == "1":
-            monster = rand.choice(monsters)
-            hjältehp = strid(hjältehp,hjältestyrka, monster)
+            hjältehp = strid(hjältehp,hjältestyrka)
         elif val == "2":
             pass
         elif val == "3":
