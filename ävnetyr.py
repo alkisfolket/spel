@@ -19,7 +19,9 @@ class Föremål():
     def __init__(self,type,):
         self.type = type
         self.styrka = rand.randint(1,20)
-        
+
+F1 = Föremål("träklubba")
+F2 = Föremål("Rostig dolk")        
 class Kista():
     def __init__(self):
         pass
