@@ -14,7 +14,7 @@ M4 = Monster("jord", "Pelle")
 M5 = Monster("invandraren","Abdull")    
 monsters=[M1,M2,M3,M4,M5]
 
-print("hej :)")
+
 class Föremål():
     def __init__(self,type,):
         self.type = type
@@ -28,22 +28,18 @@ class Fälla():
     def __init__(self):
         pass
 
-def strid(hjältehp, hjältestyrka):
+def strid(hjältehp, hjältestyrka,monster):
     stridljud = ["Haaaa! Haaa!", "Ditt jävla monster! DÖ!", "Ojj", "Du ska betala för det här", "Mitt ansikte är det sista du ser!!", "Smaka på mitt kalla järn", "Ohhhhhaaa"]
-    M1 = Monster("Eld", "Jonas")
-    M2 = Monster("Vatten", "Lennart")
-    M3 = Monster("Luft", "Stina")
-    M4 = Monster("jord", "Pelle")
-    M5 = Monster("invandraren","Abdull")    
-    monsters=[M1,M2,M3,M4,M5]
-    random_monster = rand.choice()
+   
+    random_monster = rand.choice(monsters)
+    monsterhp = random_monster.liv
 
-    while hjältehp > 0 and random_monster.liv > 0:
+    while hjältehp > 0 and monsterhp > 0:
         valt_ljud = rand.choice(stridljud)
         print(valt_ljud)
         stridljud.remove(valt_ljud) 
-        hjältehp = hjältehp - random_monster.styrka 
-        monsterhp = random_monster.liv - hjältestyrka
+        hjältehp -= random_monster.styrka 
+        monsterhp -= hjältestyrka
         if hjältehp <= 0:
 
             print("Monstret var ditt slut!")
