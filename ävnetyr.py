@@ -14,7 +14,7 @@ M4 = Monster("jord", "Pelle")
 M5 = Monster("invandraren","Abdull")    
 monsters=[M1,M2,M3,M4,M5]
 
-
+print("hej :)")
 class Föremål():
     def __init__(self,type,):
         self.type = type
