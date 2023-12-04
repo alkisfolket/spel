@@ -4,8 +4,8 @@ class Monster():
     def __init__(self, type, name):
         self.type = type
         self.name = name
-        self.styrka = rand.randint(0,10)
-        self.liv = rand.randint(1,100)
+        self.styrka = rand.randint(0,5)
+        self.liv = rand.randint(1,50)
 
 M1 = Monster("Eld", "Jonas")
 M2 = Monster("Vatten", "Lennart")
@@ -16,12 +16,16 @@ monsters=[M1,M2,M3,M4,M5]
 
 
 class Föremål():
-    def __init__(self,type,):
-        self.type = type
+    def __init__(self,name,):
+        self.name = name
         self.styrka = rand.randint(1,20)
 
 F1 = Föremål("träklubba")
-F2 = Föremål("Rostig dolk")        
+F2 = Föremål("Rostig dolk")  
+F3 = Föremål("Svärd")      
+
+items = [F1,F2,F3]
+
 class Kista():
     def __init__(self):
         pass
@@ -39,12 +43,11 @@ def strid(hjältehp, hjältestyrka):
     while hjältehp > 0 and monsterhp > 0:
         valt_ljud = rand.choice(stridljud)
         print(valt_ljud)
-        stridljud.remove(valt_ljud) 
+        #stridljud.remove(valt_ljud) 
         hjältehp -= random_monster.styrka 
         monsterhp -= hjältestyrka
         if hjältehp <= 0:
-
-            print("Monstret var ditt slut!")
+           print("Monstret var ditt slut!")
         elif monsterhp <= 0:
             print("Du dödade monstret!")
 
@@ -80,6 +83,13 @@ def slump():
         print("Bra skit")
         #Not done here 
 
+ryggsäck = []
+def kista():
+    hittad = rand.choice(items)
+    print(f"Du hittade{hittad.name}")
+    ryggsäck.append(hittad)
+ 
+funktioner = [kista,strid,]
 def main():
 
     
@@ -89,10 +99,10 @@ def main():
     print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
     hjältehp = 100
-    hjältestyrka = 1
+    hjältestyrka = 5
     rädlsa = 0
 
-    ryggsäck = []
+   
 
     while hjältehp >= 0:        
         print(
@@ -110,9 +120,21 @@ def main():
         val = input("")
 
         if val == "1":
-            hjältehp = strid(hjältehp,hjältestyrka)
+            print(""" 
+                  1. Mossig trädörr
+                  2. Rostig metalldörr
+                  3. Stendörr
+                  """)
+            
+            dörr = input("")
+
+            if dörr == 1 or 2 or 3:
+                rand.choice(funktioner)
+                #hjältehp = strid(hjältehp,hjältestyrka)
+            else: print("Fan gör du")
+            
         elif val == "2":
-            pass
+            print()
         elif val == "3":
             stats(hjältehp,hjältestyrka,rädlsa)
         elif val =="4":
