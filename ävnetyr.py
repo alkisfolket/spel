@@ -1,5 +1,13 @@
 import random as rand
 
+class Spelare():
+    def __init__(self,name):
+        self.name = name 
+        self.styrka = 100
+        self
+
+
+
 class Monster():
     def __init__(self, type, name):
         self.type = type
@@ -39,7 +47,7 @@ def strid(hjältehp, hjältestyrka):
    
     random_monster = rand.choice(monsters)
     monsterhp = random_monster.liv
-
+    print(f"O HElVETE! Du har gått in i ett rum med {random_monster.name}./n Nu får vi se om du lever länge till")
     while hjältehp > 0 and monsterhp > 0:
         valt_ljud = rand.choice(stridljud)
         print(valt_ljud)
@@ -86,21 +94,21 @@ def slump():
 ryggsäck = []
 def kista():
     hittad = rand.choice(items)
-    print(f"Du hittade{hittad.name}")
+    print(f"Du hittade{hittad.name}. Den har{hittad.styrka}styrka")
     ryggsäck.append(hittad)
  
-funktioner = [kista,strid,]
+funktioner = []
 def main():
 
     
-   
+   hjältehp = 100
+   hjältestyrka = 5
+   rädlsa = 0
 
     hjältenamn = input("vad ska du heta?")
     print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
-    hjältehp = 100
-    hjältestyrka = 5
-    rädlsa = 0
+   
 
    
 
