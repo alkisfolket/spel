@@ -99,18 +99,13 @@ def kista():
  
 funktioner = []
 def main():
-
-    
+ 
     hjältehp = 100
     hjältestyrka = 5
     rädlsa = 0
     hjältenamn = input("vad ska du heta?")
     print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
-   
-
-   
-
     while hjältehp >= 0:        
         print(
             """
@@ -135,9 +130,12 @@ def main():
             
             dörr = input("")
 
-            if dörr == 1 or 2 or 3:
-                rand.choice(funktioner)
-                #hjältehp = strid(hjältehp,hjältestyrka)
+            if dörr == "1" or dörr == "2" or dörr == "3":
+                slumptal = rand.randint(1,2)
+                if slumptal == 1:
+                    hjältehp = strid(hjältehp,hjältestyrka)
+                elif slumptal == 2:
+                    kista()
             else: print("Fan gör du")
             
         elif val == "2":
