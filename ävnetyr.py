@@ -43,26 +43,39 @@ class Fälla():
         pass
 
 def strid(hjältehp, hjältestyrka, hjältenamn):
-    stridljud_spelaren = ["haaaa! Haaa!", "ditt jävla monster! DÖ!", "Ojj", "du ska betala för det här", "mitt ansikte är det sista du ser!!", "smaka på mitt kalla järn", "ohhhhhaaa"]
-    stridljud_monster = ["bwhhaaaa", "spspsspsps", "rlrlrlrl", "jahahdn", "hoaaaa"]
     random_monster = rand.choice(monsters)
     monsterhp = random_monster.liv
     print(f"O HElVETE! Du har gått in i ett rum med {random_monster.name}.\n Nu får vi se om du lever länge till")
-    while hjältehp > 0 and monsterhp > 0:
-        valt_ljud_spelaren = rand.choice(stridljud_spelaren)
-        valt_ljud_monster = rand.choice(stridljud_monster)
-        time.sleep(2)
-        print(f"{hjältenamn} skriker {valt_ljud_spelaren}") 
-        time.sleep(2)
-        print(f"    Monstret {random_monster.name} skriker {valt_ljud_monster}") 
-        hjältehp -= random_monster.styrka 
-        monsterhp -= hjältestyrka
-        if hjältehp <= 0:
-           print("Monstret var ditt slut!")
-        elif monsterhp <= 0:
-            print("Du dödade monstret!")
-    return hjältehp
-
+    valet = input(
+    """
+    Vad vill du göra?
+        1. Strid som en hjälte
+        2. Fly därifrån som en nolla
+    """)
+    stridljud_spelaren = ["haaaa! Haaa!", "ditt jävla monster! DÖ!", "Ojj", "du ska betala för det här", "mitt ansikte är det sista du ser!!", "smaka på mitt kalla järn", "ohhhhhaaa"]
+    stridljud_monster = ["bwhhaaaa", "spspsspsps", "rlrlrlrl", "jahahdn", "hoaaaa"]
+    if valet == "1":
+        while hjältehp > 0 and monsterhp > 0:
+            valt_ljud_spelaren = rand.choice(stridljud_spelaren)
+            valt_ljud_monster = rand.choice(stridljud_monster)
+            time.sleep(2)
+            print("Du slår monstret")
+            print(f"    {hjältenamn} skriker {valt_ljud_spelaren}") 
+            time.sleep(2)
+            print("Monstret slår dig")
+            print(f"    Monstret {random_monster.name} skriker {valt_ljud_monster}") 
+            hjältehp -= random_monster.styrka 
+            monsterhp -= hjältestyrka
+            if hjältehp <= 0:
+                print("Monstret var ditt slut!")
+            elif monsterhp <= 0:
+                print(f"\nDu lyckades dödada {random_monster.name} monstret!")
+            return hjältehp
+    elif valet == "2":
+        print("Ok fegis")
+        return hjältehp
+    else:
+        print("Lägg av")
  
 def stats(hp,styrka,rädd):
     print(f"""
@@ -80,7 +93,7 @@ def slump():
     antal_gissning = 1
     gissning = int(input("Vad är din gissning? "))
     while gissning != slumptal:
-        if gissning > 10 or gissning < 1:
+        if gissning > 16 or gissning < 0:
          print ("Lägg av! ")  
         elif gissning > slumptal:
          print("För stort! ")  
@@ -99,7 +112,6 @@ def kista():
     print(f"Du hittade{hittad.name}. Den har{hittad.styrka}styrka")
     ryggsäck.append(hittad)
  
-funktioner = []
 def main():
  
     hjältehp = 100
@@ -108,7 +120,7 @@ def main():
     hjältenamn = input("vad ska du heta?")
     print(f"Var hälsad {hjältenamn} välkommen till Mumindalen")
              
-    while hjältehp >= 0:        
+    while hjältehp > 0:        
         print(
             """
 
@@ -130,16 +142,15 @@ def main():
                   3. Stendörr
                   """)
             
-            dörr = input("")
-
+            dörr = (input(""))
             if dörr == "1" or dörr == "2" or dörr == "3":
                 slumptal = rand.randint(1,2)
                 if slumptal == 1:
-                    hjältehp = strid(hjältehp,hjältestyrka, hjältenamn)
+                    hjältehp = strid(hjältehp,hjältestyrka, hjältenamn)                          
                 elif slumptal == 2:
                     kista()
-                #inte klar behöver fälla
-            else: print("Fan gör du")
+                    #inte klar behöver fälla
+                else: print("Fan gör du")
             
         elif val == "2":
             print()
