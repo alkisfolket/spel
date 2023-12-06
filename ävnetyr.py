@@ -6,8 +6,6 @@ class Spelare():
         self.styrka = 100
         self
 
-
-
 class Monster():
     def __init__(self, type, name):
         self.type = type
@@ -58,19 +56,21 @@ def strid(hjältehp, hjältestyrka, hjältenamn):
         while hjältehp > 0 and monsterhp > 0:
             valt_ljud_spelaren = rand.choice(stridljud_spelaren)
             valt_ljud_monster = rand.choice(stridljud_monster)
-            time.sleep(2)
+            time.sleep(0.5)
             print("Du slår monstret")
-            print(f"    {hjältenamn} skriker {valt_ljud_spelaren}") 
+            time.sleep (0.5)
+            print(f"    {hjältenamn} skriker {valt_ljud_spelaren}\n") 
             time.sleep(2)
             print("Monstret slår dig")
-            print(f"    Monstret {random_monster.name} skriker {valt_ljud_monster}") 
+            print(f"    Monstret {random_monster.name} skriker {valt_ljud_monster}\n") 
             hjältehp -= random_monster.styrka 
             monsterhp -= hjältestyrka
             if hjältehp <= 0:
                 print("Monstret var ditt slut!")
+                return hjältehp
             elif monsterhp <= 0:
-                print(f"\nDu lyckades dödada {random_monster.name} monstret!")
-            return hjältehp
+                print(f"\nDu lyckades döda {random_monster.name} monstret!")
+                return hjältehp
     elif valet == "2":
         print("Ok fegis")
         return hjältehp
@@ -136,7 +136,7 @@ def main():
         val = input("")
 
         if val == "1":
-            print(""" 
+            print("""                                                     
                   1. Mossig trädörr
                   2. Rostig metalldörr
                   3. Stendörr
