@@ -1,5 +1,5 @@
 import random as rand
-
+import time
 class Spelare():
     def __init__(self,name):
         self.name = name 
@@ -42,23 +42,25 @@ class Fälla():
     def __init__(self):
         pass
 
-def strid(hjältehp, hjältestyrka):
-    stridljud = ["Haaaa! Haaa!", "Ditt jävla monster! DÖ!", "Ojj", "Du ska betala för det här", "Mitt ansikte är det sista du ser!!", "Smaka på mitt kalla järn", "Ohhhhhaaa"]
-   
+def strid(hjältehp, hjältestyrka, hjältenamn):
+    stridljud_spelaren = ["haaaa! Haaa!", "ditt jävla monster! DÖ!", "Ojj", "du ska betala för det här", "mitt ansikte är det sista du ser!!", "smaka på mitt kalla järn", "ohhhhhaaa"]
+    stridljud_monster = ["bwhhaaaa", "spspsspsps", "rlrlrlrl", "jahahdn", "hoaaaa"]
     random_monster = rand.choice(monsters)
     monsterhp = random_monster.liv
-    print(f"O HElVETE! Du har gått in i ett rum med {random_monster.name}./n Nu får vi se om du lever länge till")
+    print(f"O HElVETE! Du har gått in i ett rum med {random_monster.name}.\n Nu får vi se om du lever länge till")
     while hjältehp > 0 and monsterhp > 0:
-        valt_ljud = rand.choice(stridljud)
-        print(valt_ljud)
-        #stridljud.remove(valt_ljud) 
+        valt_ljud_spelaren = rand.choice(stridljud_spelaren)
+        valt_ljud_monster = rand.choice(stridljud_monster)
+        time.sleep(2)
+        print(f"{hjältenamn} skriker {valt_ljud_spelaren}") 
+        time.sleep(2)
+        print(f"    Monstret {random_monster.name} skriker {valt_ljud_monster}") 
         hjältehp -= random_monster.styrka 
         monsterhp -= hjältestyrka
         if hjältehp <= 0:
            print("Monstret var ditt slut!")
         elif monsterhp <= 0:
             print("Du dödade monstret!")
-
     return hjältehp
 
  
@@ -133,9 +135,10 @@ def main():
             if dörr == "1" or dörr == "2" or dörr == "3":
                 slumptal = rand.randint(1,2)
                 if slumptal == 1:
-                    hjältehp = strid(hjältehp,hjältestyrka)
+                    hjältehp = strid(hjältehp,hjältestyrka, hjältenamn)
                 elif slumptal == 2:
                     kista()
+                #inte klar behöver fälla
             else: print("Fan gör du")
             
         elif val == "2":
