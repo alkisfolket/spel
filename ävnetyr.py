@@ -10,14 +10,38 @@ class Player:
         self.level = level
 
 class Monster:
-    def __init__(self,namn,styrka,liv):
+    def __init__(self, namn, styrka, liv):
         self.namn = namn
         self.styrka = styrka
         self.liv = liv
         
-class Fälla:    
-    def __init__(self):
+def fälla(hjälte):
+    slumptal = 1
+    if slumptal == 1:
+        slumptal = rand.randint (1,20)
+        print("             Gissa ett tal, 1 - 20: ")
+        antal_gissning = 1
+        gissning = int(input("            Vad är din gissning?\n "))
+        while gissning != slumptal:
+            if gissning > slumptal:
+                print("För stort! ")  
+            else:
+                print("För lågt! ")
+            gissning = int(input("Vad är din gissning? "))
+            antal_gissning += 1
+        print(f"Talet var {slumptal}. Du gissa {antal_gissning} gånger.")
+        time.sleep(2)   
+        if antal_gissning <= 4:
+            print("Du överlvede ")
+        else:
+            print("Du gissade för många gånger och FÖRLORA")     
+            hjälte.liv -= antal_gissning  
+    elif slumptal == 2:
         pass
+    #fälla 
+    else:
+        pass
+    #fälla
 
 def strid(hjälte, monster):
 
@@ -45,7 +69,7 @@ def strid(hjälte, monster):
         while hjälte.liv > 0 and monster.liv > 0:
             valt_ljud_spelaren = rand.choice(stridljud_spelaren)
             valt_ljud_monster = rand.choice(stridljud_monster)
-            time.sleep(0.5)
+            time.sleep(1)
             print(f"{hjälte.namn} slår monstret")
             time.sleep (1)
             print(f"    Du skriker {valt_ljud_spelaren}!\n") 
@@ -55,9 +79,11 @@ def strid(hjälte, monster):
             hjälte.liv -= monster.styrka 
             monster.liv -= hjälte.styrka
             if hjälte.liv <= 0:
+                time.sleep (1)
                 print("Monstret var ditt slut!")
                 return hjälte.liv
             else:
+                time.sleep (1)
                 print(f"""\nDu lyckades döda {monster.namn} monstret!
                                                                
                       """)
@@ -76,7 +102,7 @@ def stats(hjälte):
              level = {hjälte.level}
 """)
     
-def slump(hjälte):
+def beting(hjälte):
     slumptal = rand.randint (1,20)
     print("             Gissa ett tal, 1 - 20: ")
     antal_gissning = 1
@@ -162,15 +188,13 @@ def main():
                 if slumptal == 1:
 
                     monster_namn = ['Abdul', 'Jens', 'Stenhårde Tomas', 'Bertius']
-                    
-
                     monster = Monster (rand.choice (monster_namn), rand.randint (1,10), rand.randint (15,25))
                     strid (hjälte, monster)                          
                 elif slumptal == 2:
                     kista(hjälte)
                 elif slumptal == 3:
                     print("Fälla")
-                    #inte klar behöver fälla
+                    fälla(hjälte)
                 else: print("Fan gör du")
             
         elif val == "2":
@@ -186,7 +210,7 @@ def main():
             2. Inte gambla\n
             """)
             if valet == "1":
-                slump(hjälte)
+                beting(hjälte)
             elif valet == "2":
                 print("Ok din tråkiga gubbe")
             else:
