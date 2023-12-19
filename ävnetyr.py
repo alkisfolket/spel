@@ -16,7 +16,7 @@ class Monster:
         self.liv = liv
         
 def fälla(hjälte):
-    slumptal = 1
+    slumptal = rand.randint(1,3)
     if slumptal == 1:
         slumptal = rand.randint (1,20)
         print("             Gissa ett tal, 1 - 20: ")
@@ -32,13 +32,28 @@ def fälla(hjälte):
         print(f"Talet var {slumptal}. Du gissa {antal_gissning} gånger.")
         time.sleep(2)   
         if antal_gissning <= 4:
-            print("Du överlvede ")
+            print("Du överlevde ")
+            hjälte.level += 1
         else:
-            print("Du gissade för många gånger och FÖRLORA")     
+            print(f"Du gissade för många gånger och FÖRLORADE {antal_gissning} LIV")     
             hjälte.liv -= antal_gissning  
     elif slumptal == 2:
-        pass
-    #fälla 
+        print("STORY")
+        print("Den som tillverkar mig behöver mig inte, den som köper mig använder mig inte, den som använder mig kan varken se eller känna mig. Vad är jag?")
+        valet = input(
+            """
+            1. Yxa
+            2. Sword
+            3. Cocaine 
+            4.Lik Kista
+            """)
+        
+        if valet == 1 or valet == 2 or valet == 3: 
+            print("Fel")
+            hjälte.liv -= 5              
+        else:
+            print("Rätt")
+
     else:
         pass
     #fälla
@@ -135,7 +150,7 @@ def kista(hjälte):
 
     F1 = Föremål("träklubba",4,0)
     F2 = Föremål("Rostig dolk",2,0)  
-    F3 = Föremål("Svärd",8.0)
+    F3 = Föremål("Svärd",8,0)
     F4 = Föremål("träslev",12,5)
     F5 = Föremål("Farlig panna",6,0)  
     F6 = Föremål("Hårda ord",15,-4)
@@ -149,7 +164,7 @@ def kista(hjälte):
     items = [F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11]
 
     hittad = rand.choice(items)
-    print(f"Du hittade {hittad.namn}. Den har {hittad.styrka} styrka och ger dig {hittad.liv}")
+    print(f"Du hittade {hittad.namn}. Den har {hittad.styrka} styrka och ger dig {hittad.liv} liv.")
     hjälte.ryggsäck.append(hittad)
     hjälte.styrka += hittad.styrka
     hjälte.liv += hittad.liv
@@ -186,8 +201,7 @@ def main():
             if dörr == "1" or dörr == "2" or dörr == "3":
                 slumptal = rand.randint(1,3)
                 if slumptal == 1:
-
-                    monster_namn = ['Abdul', 'Jens', 'Stenhårde Tomas', 'Bertius']
+                    monster_namn = ["Abdul", "Jens", "Stenhårde Tomas", "Bertius"]
                     monster = Monster (rand.choice (monster_namn), rand.randint (1,10), rand.randint (15,25))
                     strid (hjälte, monster)                          
                 elif slumptal == 2:
